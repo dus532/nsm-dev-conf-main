@@ -13,6 +13,7 @@
 
 html,
 body {
+  background: var(--primary400);
   max-width: 100vw;
   font-family: 'Pretendard';
   overflow-x: hidden;
@@ -21,7 +22,6 @@ body {
 
 body {
   color: var(--foreground);
-  background: var(--primary400);
   padding-bottom: 60px;
 }
 

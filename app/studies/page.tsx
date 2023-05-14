@@ -32,7 +32,7 @@ export default function Page() {
       URL.append('category', debouncedQuery.category);
     }
 
-    router.replace(`${pathname}?${URL.toString()}`, {
+    router.push(`${pathname}?${URL.toString()}`, {
       forceOptimisticNavigation: true,
     });
   }, [pathname, debouncedQuery, router]);
