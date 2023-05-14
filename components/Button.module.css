@@ -1,0 +1,14 @@
+.Button {
+  padding: 10px 16px;
+  border: 2px solid white;
+  font-weight: 600;
+  background: transparent;
+  color: white;
+  line-height: 100%;
+  font-size: 18px;
+}
+
+.SecondaryButton {
+  border: none;
+  background: var(--secondary);
+}

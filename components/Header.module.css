@@ -1,0 +1,15 @@
+.Header {
+  width: 1200px;
+  height: 100px;
+  margin: 0 auto;
+  border-bottom: 1px solid var(--secondary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.HeaderRight {
+  display: flex;
+  gap: 12px;
+}
