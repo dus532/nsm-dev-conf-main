@@ -1,14 +1,14 @@
 export const asyncUserEffect =
   (key: string) =>
   ({ onSet, setSelf }: any) => {
-    const savedValue = localStorage.getItem(key);
+    const savedValue = window.localStorage.getItem(key);
     if (savedValue != null) {
       setSelf(JSON.parse(savedValue));
     }
 
     onSet((newValue: any, _: any, isReset: boolean) => {
       isReset
-        ? localStorage.removeItem(key)
-        : localStorage.setItem(key, JSON.stringify(newValue));
+        ? window.localStorage.removeItem(key)
+        : window.localStorage.setItem(key, JSON.stringify(newValue));
     });
   };

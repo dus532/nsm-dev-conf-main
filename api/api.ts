@@ -26,7 +26,7 @@ export async function getStudies({
   category,
   search,
 }: {
-  category?: 'FE' | 'BE' | 'APP';
+  category?: string;
   search?: string;
 } = {}) {
   return api.get<
