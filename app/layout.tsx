@@ -2,6 +2,7 @@ import Header from '@/components/Header';
 import './globals.css';
 import styles from './layout.module.css';
 import ReactQueryProvider from '@/app/ReactQueryProviders';
+import RecoilRoot from '@/app/RecoilRoot';
 
 export default function RootLayout({
   children,
@@ -11,10 +12,12 @@ export default function RootLayout({
   return (
     <html lang='ko'>
       <body>
-        <ReactQueryProvider>
-          <Header />
-          <main className={styles.Container}>{children}</main>
-        </ReactQueryProvider>
+        <RecoilRoot>
+          <ReactQueryProvider>
+            <Header />
+            <main className={styles.Container}>{children}</main>
+          </ReactQueryProvider>
+        </RecoilRoot>
       </body>
     </html>
   );

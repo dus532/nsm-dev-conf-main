@@ -2,36 +2,31 @@
 
 import PageTitle from '@/components/PageTitle';
 import globalStyles from '../globals.module.css';
-import styles from './page.module.css';
 import { useGetStudies } from '@/api/queries';
 import StudyItem from '@/components/StudyItem';
 import Link from 'next/link';
+import { myStudyIdsState } from '@/store/my';
+import { useRecoilValue } from 'recoil';
 
 export default function Page() {
   const { data } = useGetStudies();
-
   const dataStudies = data?.data.payload;
+
+  const studies = useRecoilValue(myStudyIdsState);
+  const myStudies = dataStudies?.filter(
+    (study) => study.id === studies?.find((id) => id === study.id)
+  );
 
   return (
     <>
-      <PageTitle
-        bottom={
-          <div className={styles.PageTitle_Bottom}>
-            <select>
-              <option>전체</option>
-              <option>FE</option>
-              <option>BE</option>
-              <option>APP</option>
-            </select>
-            <input placeholder='검색' />
-          </div>
-        }
-      >
-        CONF.
+      <PageTitle>
+        MY
         <br />
-        <span className={globalStyles.Secondary}>LIST</span>
+        <span className={globalStyles.Secondary}>
+          CONF &#123;{studies?.length}&#125;
+        </span>
       </PageTitle>
-      {dataStudies?.map((study) => (
+      {myStudies?.map((study) => (
         <Link key={study.id} href={`/studies/${study.id}`}>
           <StudyItem
             id={study.id}

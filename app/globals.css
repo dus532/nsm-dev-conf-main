@@ -79,3 +79,8 @@ select {
   width: 144px;
   font-size: 18px;
 }
+
+button {
+  background: transparent;
+  border: none;
+}
