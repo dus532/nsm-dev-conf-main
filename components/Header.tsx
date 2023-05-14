@@ -17,7 +17,7 @@ export default function Header() {
       </Link>
       <div className={styles.HeaderRight}>
         <Link href='/my'>
-          <Button.Secondary onClick={() => {}}>
+          <Button.Secondary>
             내 강의 &#123;{studies?.length}&#125;
           </Button.Secondary>
         </Link>
