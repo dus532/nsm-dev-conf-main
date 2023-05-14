@@ -7,15 +7,13 @@ import { useGetStudies } from '@/api/queries';
 import StudyItem from '@/components/StudyItem';
 import Link from 'next/link';
 import { useState } from 'react';
-import { debounce } from '@/utils/debounce';
 
 export default function Page() {
   const [query, setQuery] = useState({
     search: '',
     category: '',
   });
-  const { data } = useGetStudies(query);
-
+  const { data, isLoading } = useGetStudies(query);
   const dataStudies = data?.data.payload;
 
   return (
@@ -53,16 +51,20 @@ export default function Page() {
         <br />
         <span className={globalStyles.Secondary}>LIST</span>
       </PageTitle>
-      {dataStudies?.map((study) => (
-        <Link key={study.id} href={`/studies/${study.id}`}>
-          <StudyItem
-            id={study.id}
-            category={study.category}
-            name={study.name}
-            description={study.description}
-          />
-        </Link>
-      ))}
+      {isLoading ? (
+        <div className={styles.Loading}>로딩중..</div>
+      ) : (
+        dataStudies?.map((study) => (
+          <Link key={study.id} href={`/studies/${study.id}`}>
+            <StudyItem
+              id={study.id}
+              category={study.category}
+              name={study.name}
+              description={study.description}
+            />
+          </Link>
+        ))
+      )}
     </>
   );
 }
