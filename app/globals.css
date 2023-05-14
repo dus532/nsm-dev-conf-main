@@ -63,6 +63,10 @@ input {
   color: white;
   width: 190px;
   font-size: 18px;
+  background-image: url(/image/search.png);
+  background-size: 24px;
+  background-position: center right 5px;
+  background-repeat: no-repeat;
 }
 
 input::placeholder {
@@ -78,6 +82,11 @@ select {
   color: white;
   width: 144px;
   font-size: 18px;
+  appearance: none;
+  background-image: url(/image/down.png);
+  background-size: 12px;
+  background-position: center right 10px;
+  background-repeat: no-repeat;
 }
 
 button {
