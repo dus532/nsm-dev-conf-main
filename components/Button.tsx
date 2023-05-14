@@ -28,3 +28,16 @@ Button.Secondary = function SecondaryButton({
     </button>
   );
 };
+
+Button.LightBlue = function LightBlueButton({
+  children,
+  ...props
+}: {
+  children: React.ReactNode;
+} & React.ButtonHTMLAttributes<HTMLButtonElement>) {
+  return (
+    <button className={`${styles.Button} ${styles.LightBlueButton}`} {...props}>
+      {children}
+    </button>
+  );
+};

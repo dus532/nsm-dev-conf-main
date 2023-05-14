@@ -6,6 +6,8 @@ import dayjs from 'dayjs';
 
 import type { Metadata } from 'next';
 import DetailItem from '@/components/DetailItem';
+import Button from '@/components/Button';
+import Subscription from '@/components/Subscription';
 
 export async function generateMetadata({
   params,
@@ -40,7 +42,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   return (
     <>
-      <PageTitle>
+      <PageTitle bottom={<Subscription id={params.id} />}>
         <span className={globalStyles.Secondary}>{dataStudy?.category}</span>
         <br />
         {dataStudy?.name}

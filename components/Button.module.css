@@ -12,3 +12,8 @@
   border: 2px solid var(--secondary);
   background: var(--secondary);
 }
+
+.LightBlueButton {
+  border: 2px solid var(--primary200);
+  background: var(--primary200);
+}
