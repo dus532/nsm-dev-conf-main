@@ -31,3 +31,8 @@
   height: 32px;
   background: var(--secondary);
 }
+
+.Highlight {
+  color: var(--secondary);
+  font-weight: 600;
+}

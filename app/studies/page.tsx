@@ -6,14 +6,38 @@ import styles from './page.module.css';
 import { useGetStudies } from '@/api/queries';
 import StudyItem from '@/components/StudyItem';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
+import { useDebounce } from '@/utils/debounce';
 
 export default function Page() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
   const [query, setQuery] = useState({
-    search: '',
-    category: '',
+    search: searchParams.get('search') ?? '',
+    category: searchParams.get('category') ?? '',
   });
-  const { data, isLoading } = useGetStudies(query);
+
+  const debouncedQuery = useDebounce(query, 500);
+
+  useEffect(() => {
+    const URL = new URLSearchParams();
+
+    if (debouncedQuery.search) {
+      URL.append('search', debouncedQuery.search);
+    }
+    if (debouncedQuery.category) {
+      URL.append('category', debouncedQuery.category);
+    }
+
+    router.replace(`${pathname}?${URL.toString()}`, {
+      forceOptimisticNavigation: true,
+    });
+  }, [pathname, debouncedQuery, router]);
+
+  const { data, isLoading } = useGetStudies(debouncedQuery);
   const dataStudies = data?.data.payload;
 
   return (

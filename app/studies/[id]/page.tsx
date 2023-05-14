@@ -6,7 +6,6 @@ import dayjs from 'dayjs';
 
 import type { Metadata } from 'next';
 import DetailItem from '@/components/DetailItem';
-import Button from '@/components/Button';
 import Subscription from '@/components/Subscription';
 
 export async function generateMetadata({

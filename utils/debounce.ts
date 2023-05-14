@@ -1,15 +1,15 @@
-export const debounce = <T extends (...args: any[]) => any>(
-  fn: T,
-  delay: number
-) => {
-  let timeout: ReturnType<typeof setTimeout>;
+import { useEffect, useState } from 'react';
 
-  return (...args: Parameters<T>): ReturnType<T> => {
-    let result: any;
-    if (timeout) clearTimeout(timeout);
-    timeout = setTimeout(() => {
-      result = fn(...args);
-    }, delay);
-    return result;
-  };
-};
+export function useDebounce<T>(value: T, delay?: number): T {
+  const [debouncedValue, setDebouncedValue] = useState<T>(value);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setDebouncedValue(value), delay || 500);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [value, delay]);
+
+  return debouncedValue;
+}
