@@ -2,7 +2,10 @@ import { getStudiesByID } from '@/api/api';
 import globalStyles from '../../globals.module.css';
 import PageTitle from '@/components/PageTitle';
 
+import dayjs from 'dayjs';
+
 import type { Metadata } from 'next';
+import DetailItem from '@/components/DetailItem';
 
 export async function generateMetadata({
   params,
@@ -32,6 +35,9 @@ export default async function Page({ params }: { params: { id: string } }) {
   const { data } = await getStudiesByID({ id: params.id });
   const dataStudy = data.payload;
 
+  const startDate = dayjs(dataStudy.startDateTime);
+  const endDate = dayjs(dataStudy.endDateTime);
+
   return (
     <>
       <PageTitle>
@@ -39,6 +45,18 @@ export default async function Page({ params }: { params: { id: string } }) {
         <br />
         {dataStudy?.name}
       </PageTitle>
+      <DetailItem title='소개' body={dataStudy?.description} />
+      <DetailItem title='장소' body={dataStudy?.location} />
+      <DetailItem
+        title='시간'
+        body={`${startDate.format('MM.DD hh:mm')} ~ ${endDate.format(
+          startDate.format('MM.DD') === endDate.format('MM.DD')
+            ? 'hh:mm'
+            : 'MM.DD hh:mm'
+        )}`}
+      />
+      <DetailItem title='강사' body={dataStudy?.speaker?.join(', ')} />
+      <DetailItem title='기술 스택' body={dataStudy?.stack?.join(',')} />
     </>
   );
 }

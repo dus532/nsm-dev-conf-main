@@ -5,6 +5,7 @@ import globalStyles from '../globals.module.css';
 import styles from './page.module.css';
 import { useGetStudies } from '@/api/queries';
 import StudyItem from '@/components/StudyItem';
+import Link from 'next/link';
 
 export default function Page() {
   const { data } = useGetStudies();
@@ -31,12 +32,13 @@ export default function Page() {
         <span className={globalStyles.Secondary}>LIST</span>
       </PageTitle>
       {dataStudies?.map((study) => (
-        <StudyItem
-          key={study.id}
-          category={study.category}
-          name={study.name}
-          description={study.description}
-        />
+        <Link key={study.id} href={`/studies/${study.id}`}>
+          <StudyItem
+            category={study.category}
+            name={study.name}
+            description={study.description}
+          />
+        </Link>
       ))}
     </>
   );
