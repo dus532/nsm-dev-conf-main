@@ -1,0 +1,4 @@
+.PageTitle_Bottom {
+  display: flex;
+  justify-content: space-between;
+}

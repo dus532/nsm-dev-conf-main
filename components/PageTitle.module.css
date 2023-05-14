@@ -1,0 +1,14 @@
+.Page_Title {
+  padding-top: 60px;
+  border-bottom: 1px solid white;
+}
+
+.Secondary {
+  color: var(--secondary);
+}
+
+.Page_Bottom {
+  width: 100%;
+  margin-bottom: 12px;
+  margin-top: 60px;
+}

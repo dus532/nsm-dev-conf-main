@@ -20,13 +20,13 @@ export default function Home() {
         <BGTitle left='60px' />
         <BGTitle left='120px' />
       </div>
-      <div className={styles.Title}>
+      <h1 className={styles.Title}>
         MEET
         <br />
         <span className={styles.Title_Secondary}>NEW</span>
         <br />
         DEVELOP.
-      </div>
+      </h1>
       <div className={styles.SubTitle}>
         NSM
         <br />

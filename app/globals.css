@@ -16,6 +16,7 @@ body {
   max-width: 100vw;
   font-family: 'Pretendard';
   overflow-x: hidden;
+  font-weight: 400;
 }
 
 body {
@@ -32,4 +33,48 @@ button {
   border-color: transparent;
   font-family: inherit;
   cursor: pointer;
+}
+
+h1 {
+  font-family: 'neurimbo Gothic';
+  font-size: 160px;
+  padding: 0;
+  margin: 0;
+  line-height: 79%;
+  font-weight: 400;
+}
+
+h2 {
+  font-family: 'neurimbo Gothic';
+  font-size: 72px;
+  padding: 0;
+  margin: 0;
+  line-height: 100%;
+  font-weight: 400;
+}
+
+input {
+  height: 38px;
+  padding: 10px 16px;
+  background-color: transparent;
+  border: 1px solid white;
+  outline: none;
+  color: white;
+  width: 190px;
+  font-size: 18px;
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+select {
+  height: 38px;
+  padding: 0px 16px;
+  background-color: transparent;
+  border: 1px solid white;
+  outline: none;
+  color: white;
+  width: 144px;
+  font-size: 18px;
 }
