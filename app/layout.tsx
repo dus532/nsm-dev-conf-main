@@ -14,7 +14,6 @@ export default function RootLayout({
       <body>
         <RecoilRoot>
           <ReactQueryProvider>
-            <Header />
             <main className={styles.Container}>{children}</main>
           </ReactQueryProvider>
         </RecoilRoot>
